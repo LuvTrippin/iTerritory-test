@@ -14,18 +14,21 @@ const ImageWithFallback: React.FunctionComponent<ImageWithFallbackProps> = ({
     ...props
 }) => {
     const [currentSrc, setCurrentSrc] = React.useState(src);
+    const [currentAlt, setCurrentAlt] = React.useState(alt);
 
     const handleError = () => {
         setCurrentSrc(fallback);
+        setCurrentAlt('Плейсхолдер изображения');
     };
 
     useEffect(() => {
         if (!src) {
             setCurrentSrc(fallback);
+            setCurrentAlt('Плейсхолдер изображения');
         }
     }, []);
 
-    return <img src={currentSrc} alt={alt} onError={handleError} {...props} />;
+    return <img src={currentSrc} alt={currentAlt} onError={handleError} {...props} />;
 }
 
 export default ImageWithFallback;

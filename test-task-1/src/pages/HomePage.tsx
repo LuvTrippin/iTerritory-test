@@ -1,8 +1,9 @@
 import ImageWithFallback from "../components/ImageWithFallback/ImageWithFallback.tsx";
+import Gallery from "../components/Gallery/Gallery.tsx";
 import placeholderImg from "../assets/placeholder.jpg";
 
 const HomePage = () => (
-    <div>
+    <>
         <h1>Главная страница</h1>
         <p>Это основная страница для тестового задания от iТерритория</p>
         <section>
@@ -20,38 +21,49 @@ const HomePage = () => (
                 <li>Адаптивная верстка</li>
                 <li>Строгое соблюдение семантики</li>
                 <li>Отсутствие inline-стилей</li>
-                <li>Данные замоканы, либо используется внешнее Api (через Axios)</li>
-                <ul>
-                    <li>Ссылки:</li>
+                <li>
+                    Данные замоканы, либо используется внешнее Api (через Axios)
                     <ul>
-                        <li>Минимум 2 якорные ссылки</li>
-                        <li>Минимум 2 страницы (включая главную страницу)</li>
-                        <li>По 1 ссылке на телефон, email и внешний ресурс</li>
+                        <li>
+                            Ссылки:
+                            <ul>
+                                <li>Минимум 2 якорные ссылки</li>
+                                <li>Минимум 2 страницы (включая главную страницу)</li>
+                                <li>По 1 ссылке на телефон, email и внешний ресурс</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Любое наполнение согласно тематике сайта, содержащее теги:
+                            <ul>
+                                <li>nav</li>
+                                <li>h1, h2</li>
+                                <li>section</li>
+                                <li>article</li>
+                                <li>aside (если будет боковая панель)</li>
+                                <li>ul или ol</li>
+                                <li>img с fallback-изображением</li>
+                            </ul>
+                        </li>
                     </ul>
-                    <li>Любое наполнение согласно тематике сайта, содержащее теги:</li>
-                    <ul>
-                        <li>nav</li>
-                        <li>h1, h2</li>
-                        <li>section</li>
-                        <li>article</li>
-                        <li>aside (если будет боковая панель)</li>
-                        <li>ul или ol</li>
-                        <li>img с fallback-изображением</li>
-                    </ul>
-                </ul>
+                </li>
             </ul>
         </section>
         <section>
-            <h2>Галлерея</h2>
-            <article id="gallery">
+            <h2>Реализация пунктов с изображениями</h2>
+            <article>
+                <h3>Изображение с fallback на React</h3>
                 <ImageWithFallback
                     src="https://placehold.co/600x400/jpg?text=Hello"
                     fallback={placeholderImg}
-                    alt="Плейсхолдер изображения"
+                    alt="Оригинальная картинка"
                 />
             </article>
+            <article id="gallery">
+                <h3>Галерея</h3>
+                <Gallery/>
+            </article>
         </section>
-    </div>
+    </>
 )
 
 export default HomePage;
