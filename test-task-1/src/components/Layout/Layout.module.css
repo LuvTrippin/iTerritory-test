@@ -1,5 +1,15 @@
 .header {
-
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    background-color: #2e303a;
+    padding-block: 16px;
+    padding-inline: calc(50vw - 50%);
+    margin-inline: calc(50% - 50vw);
+    border-bottom: 1px solid #9ca3af;
+    margin-bottom: 64px;
 }
 
 .container {
@@ -11,11 +21,15 @@
 }
 
 .nav {
-
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+    align-items: center;
 }
 
 .activeLink {
-
+    color: #f4f3ec;
+    font-weight: bold;
 }
 
 .main {
@@ -23,9 +37,39 @@
 }
 
 .footer {
-
+    display: flex;
+    align-items: center;
+    background-color: #2e303a;
+    padding-block: 32px;
+    padding-inline: calc(50vw - 50%);
+    margin-inline: calc(50% - 50vw);
+    border-top: 1px solid #9ca3af;
+    margin-top: 64px;
 }
 
 .contacts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
 
+@media screen and (max-width: 1279px) {
+
+}
+
+@media screen and (max-width: 679px) {
+    .header {
+        flex-direction: column;
+        align-items: baseline;
+    }
+    .contacts {
+        align-items: baseline;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .nav {
+        flex-wrap: wrap;
+    }
 }

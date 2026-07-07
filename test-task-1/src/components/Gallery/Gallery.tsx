@@ -1,7 +1,7 @@
 import * as React from "react";
 import axios from "axios";
 import ImageGallery from "react-image-gallery";
-import type { GalleryItem } from "react-image-gallery";
+import type { GalleryItem, ImageGalleryRef } from "react-image-gallery";
 import "react-image-gallery/styles/image-gallery.css";
 import styles from "./Gallery.module.css";
 
@@ -29,6 +29,7 @@ const getPhotoUrl = (photo: Photo, maxWidth: number) => {
 };
 
 const Gallery: React.FunctionComponent = () => {
+    const galleryRef = React.useRef<ImageGalleryRef>(null);
     const [photos, setPhotos] = React.useState<Photo[]>([]);
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState<string | null>(null);
@@ -67,6 +68,10 @@ const Gallery: React.FunctionComponent = () => {
         [photos],
     );
 
+    const handleImageClick = () => {
+        galleryRef.current?.toggleFullScreen();
+    };
+
     if (loading) {
         return <p>Загрузка галереи...</p>;
     }
@@ -77,7 +82,12 @@ const Gallery: React.FunctionComponent = () => {
 
     return (
         <div className={styles.gallery}>
-            <ImageGallery items={items} lazyLoad={false} />
+            <ImageGallery
+                ref={galleryRef}
+                items={items}
+                lazyLoad={false}
+                onClick={handleImageClick}
+            />
         </div>
     );
 };

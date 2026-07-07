@@ -7,6 +7,13 @@ const HomePage = () => (
         <h1>Главная страница</h1>
         <p>Это основная страница для тестового задания от iТерритория</p>
         <section>
+            <h2>Якорные ссылки</h2>
+            <div className="anchor-links">
+                <a href="#gallery">Галерея</a>
+                <a href="#img-with-fallback">Изображение с Fallback</a>
+            </div>
+        </section>
+        <section>
             <h2>О задаче</h2>
             <p>Необходимо разработать SPA на свободную тематику, используя React + TypeScript</p>
             <p>В тз описаны следующие требования:</p>
@@ -50,7 +57,7 @@ const HomePage = () => (
         </section>
         <section>
             <h2>Реализация пунктов с изображениями</h2>
-            <article>
+            <article id="img-with-fallback">
                 <h3>Изображение с fallback на React</h3>
                 <ImageWithFallback
                     src="https://placehold.co/600x400/jpg?text=Hello"
