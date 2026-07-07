@@ -1,6 +1,6 @@
 import type { User } from "../types";
 import { create } from 'zustand';
-import {persist} from "zustand/middleware/persist";
+import { persist } from 'zustand/middleware'
 import {MOCK_USERS} from "../constants/users.ts";
 
 interface AuthState {
