@@ -26,3 +26,12 @@ export interface PostListProps {
     onDelete: (id: number) => void;
     deletingId: number | null;
 }
+
+export interface PostModalProps {
+    isOpen: boolean;
+    title: string;
+    initialValues?: PostFormData;
+    submitLabel: string;
+    onSubmit: (data: PostFormData) => Promise<void>;
+    onClose: () => void;
+}
