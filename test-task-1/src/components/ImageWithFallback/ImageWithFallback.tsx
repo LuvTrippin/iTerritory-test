@@ -1,12 +1,7 @@
 import * as React from "react";
 import {useEffect} from "react";
 import styles from "./ImageWithFallback.module.css"
-
-interface ImageWithFallbackProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-    src?: string;
-    fallback?: string;
-    alt?: string;
-}
+import type {ImageWithFallbackProps} from "../../types";
 
 const ImageWithFallback: React.FunctionComponent<ImageWithFallbackProps> = ({
     src,

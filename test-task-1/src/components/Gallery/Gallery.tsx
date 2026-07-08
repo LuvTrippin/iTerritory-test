@@ -4,15 +4,8 @@ import ImageGallery from "react-image-gallery";
 import type { GalleryItem, ImageGalleryRef } from "react-image-gallery";
 import "react-image-gallery/styles/image-gallery.css";
 import styles from "./Gallery.module.css";
+import type {Photo} from "../../types";
 
-interface Photo {
-    id: string;
-    author: string;
-    width: number;
-    height: number;
-    url: string;
-    download_url: string;
-}
 
 const PHOTOS_URL = "https://picsum.photos/v2/list?page=2&limit=30";
 const MAX_IMAGE_WIDTH = 1280;
