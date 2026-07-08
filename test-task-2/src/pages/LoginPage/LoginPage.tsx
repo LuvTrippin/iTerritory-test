@@ -1,6 +1,6 @@
 import { useState } from "react";
-import {replace, useNavigate} from "react-router-dom";
-import { ValidationError } from "yup";
+import {useNavigate} from "react-router-dom";
+import {ValidationError} from "yup";
 import { useAuthStore } from "../../store/authStore";
 import type { LoginFormData } from "../../types";
 import { loginSchema } from "../../validation/loginSchema";
@@ -14,13 +14,13 @@ export function LoginPage() {
         email: '',
         password: '',
     });
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState<{ email?: string, password?: string }>({});
     const [authError, setAuthError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (field: keyof LoginFormData, value: string) => {
         setForm((prev) => ({ ...prev, [field]: value }));
-        setErrors((prev) => ({ ...prev, [field]: null }));
+        setErrors((prev) => ({ ...prev, [field]: undefined }));
         setAuthError('');
     }
 
@@ -44,10 +44,10 @@ export function LoginPage() {
         } catch (error) {
 
             if (error instanceof ValidationError) {
-                const nextErrors = {};
+                const nextErrors: { email?: string, password?: string } = {};
 
                 error.inner.forEach((item) => {
-                    if (item.path) {
+                    if (item.path === 'email' || item.path === 'password') {
                         nextErrors[item.path] = item.message;
                     }
                 })
