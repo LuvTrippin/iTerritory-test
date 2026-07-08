@@ -5,6 +5,7 @@ import { useAuthStore } from "../../store/authStore";
 import type { LoginFormData } from "../../types";
 import { loginSchema } from "../../validation/loginSchema";
 import * as React from "react";
+import {Header} from "../../components/Header/Header.tsx";
 
 
 export function LoginPage() {
@@ -63,54 +64,57 @@ export function LoginPage() {
 
 
     return (
-        <div className="login-page">
-            <div className="login-card">
-                <h1>iTerritory test</h1>
-                <p>Войдите, чтобы управлять заметками</p>
+        <>
+            <Header/>
+            <main className="login-page main">
+                <div className="login-card">
+                    <h1>iTerritory test</h1>
+                    <p>Войдите, чтобы управлять заметками</p>
 
-                <form onSubmit={handleSubmit}>
-                    <div className="form__field">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            id="email"
-                            type="email"
-                            autoComplete="email"
-                            value={form.email}
-                            onChange={(e) => handleChange('email', e.target.value)}
-                            placeholder="user@test.ru"
-                        />
-                        {errors.email && <span>{errors.email}</span>}
+                    <form onSubmit={handleSubmit}>
+                        <div className="form__field">
+                            <label htmlFor="email">Email</label>
+                            <input
+                                id="email"
+                                type="email"
+                                autoComplete="email"
+                                value={form.email}
+                                onChange={(e) => handleChange('email', e.target.value)}
+                                placeholder="user@test.ru"
+                            />
+                            {errors.email && <span>{errors.email}</span>}
+                        </div>
+
+                        <div className="form__field">
+                            <label htmlFor="password">Пароль</label>
+                            <input
+                                id="password"
+                                type="password"
+                                autoComplete="current-password"
+                                value={form.password}
+                                onChange={(e) => handleChange('password', e.target.value)}
+                                placeholder="••••••••"
+                            />
+                            {errors.password && <span>{errors.password}</span>}
+                        </div>
+
+                        {authError && <div>{authError}</div>}
+
+                        <button type="submit" disabled={isSubmitting}>
+                            {isSubmitting ? 'Вход...' : 'Войти'}
+                        </button>
+                    </form>
+
+                    <div className="login-card__hint">
+                        <p>Тестовые пользователи:</p>
+                        <ul>
+                            <li>user@test.ru / password</li>
+                            <li>admin@test.ru / admin321</li>
+                            <li>mock@test.ru / mock123</li>
+                        </ul>
                     </div>
-
-                    <div className="form__field">
-                        <label htmlFor="password">Пароль</label>
-                        <input
-                            id="password"
-                            type="password"
-                            autoComplete="current-password"
-                            value={form.password}
-                            onChange={(e) => handleChange('password', e.target.value)}
-                            placeholder="••••••••"
-                        />
-                        {errors.password && <span>{errors.password}</span>}
-                    </div>
-
-                    {authError && <div>{authError}</div>}
-
-                    <button type="submit" disabled={isSubmitting}>
-                        {isSubmitting ? 'Вход...' : 'Войти'}
-                    </button>
-                </form>
-
-                <div className="login-card__hint">
-                    <p>Тестовые пользователи:</p>
-                    <ul>
-                        <li>user@test.ru / password</li>
-                        <li>admin@test.ru / admin321</li>
-                        <li>mock@test.ru / mock123</li>
-                    </ul>
                 </div>
-            </div>
-        </div>
+            </main>
+        </>
     )
 }
