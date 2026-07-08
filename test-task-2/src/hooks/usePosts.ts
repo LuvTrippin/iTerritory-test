@@ -1,6 +1,7 @@
 import {queryOptions, useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
 import type {Post, PostFormData} from "../types";
 import {postApi} from "../api/postsApi.ts";
+import {useAuthStore} from "../store/authStore.ts";
 
 
 export const postsQueryOptions = queryOptions({
@@ -14,9 +15,10 @@ export function usePosts() {
 
 export function useCreatePost() {
     const queryClient = useQueryClient();
+    const userId = useAuthStore((state) => state.user.id);
 
     return useMutation({
-        mutationFn: (data: PostFormData) => postApi.create(data),
+        mutationFn: (data: PostFormData) => postApi.create(data, userId),
         onSuccess: (newPost) => {
             queryClient.setQueryData<Post[]>(postsQueryOptions.queryKey, (old) =>
                 old ? [newPost, ...old] : [newPost],
@@ -27,9 +29,10 @@ export function useCreatePost() {
 
 export function useUpdatePost() {
     const queryClient = useQueryClient();
+    const userId = useAuthStore((state) => state.user.id);
 
     return useMutation({
-        mutationFn: ({id, data}: {id: number, data: PostFormData}) => postApi.update(id, data),
+        mutationFn: ({id, data}: {id: number, data: PostFormData}) => postApi.update(id, data, userId),
         onSuccess: (updatedPost) => {
             queryClient.setQueryData<Post[]>(postsQueryOptions.queryKey, (old) =>
                 old?.map(post => (post.id === updatedPost.id ? updatedPost : post)),

@@ -35,3 +35,16 @@ export interface PostModalProps {
     onSubmit: (data: PostFormData) => Promise<void>;
     onClose: () => void;
 }
+
+export interface MockUser {
+    id: number;
+    email: string;
+    password: string;
+    name: string;
+}
+
+export interface User {
+    id: number;
+    email: string;
+    name: string;
+}

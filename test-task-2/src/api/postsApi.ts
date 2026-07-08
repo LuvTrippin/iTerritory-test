@@ -8,18 +8,18 @@ export const postApi = {
         return data;
     },
 
-    create: async (post: PostFormData): Promise<Post> => {
+    create: async (post: PostFormData, userId: number): Promise<Post> => {
         const { data } = await apiClient.post<Post>('/posts', {
             ...post,
-            userId: 1,
+            userId,
         });
         return data;
     },
 
-    update: async (id: number, post: PostFormData): Promise<Post> => {
+    update: async (id: number, post: PostFormData, userId: number): Promise<Post> => {
         const { data } = await apiClient.put(`/posts/${id}`, {
             ...post,
-            userId: 1,
+            userId,
         });
 
         return data;

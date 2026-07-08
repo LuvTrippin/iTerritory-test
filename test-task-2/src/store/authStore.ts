@@ -21,7 +21,7 @@ export const useAuthStore = create<AuthState>()(
                     return false;
                 }
 
-                set({user: {email: found.email, name: found.name}});
+                set({user: {id: found.id, email: found.email, name: found.name}});
 
                 return true;
             },
