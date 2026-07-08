@@ -72,7 +72,7 @@ export function LoginPage() {
                     <p>Войдите, чтобы управлять постами</p>
 
                     <form onSubmit={handleSubmit}>
-                        <div className="form__field">
+                        <div className="form-field">
                             <label htmlFor="email">Email</label>
                             <input
                                 id="email"
@@ -85,7 +85,7 @@ export function LoginPage() {
                             {errors.email && <span>{errors.email}</span>}
                         </div>
 
-                        <div className="form__field">
+                        <div className="form-field">
                             <label htmlFor="password">Пароль</label>
                             <input
                                 id="password"
