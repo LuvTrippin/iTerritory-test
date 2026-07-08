@@ -19,3 +19,10 @@ export interface PostFormData {
     title: string;
     body: string;
 }
+
+export interface PostListProps {
+    posts: Post[];
+    onEdit: (post: Post) => void;
+    onDelete: (id: number) => void;
+    deletingId: number | null;
+}

@@ -69,7 +69,7 @@ export function LoginPage() {
             <main className="login-page main">
                 <div className="login-card">
                     <h1>iTerritory test</h1>
-                    <p>Войдите, чтобы управлять заметками</p>
+                    <p>Войдите, чтобы управлять постами</p>
 
                     <form onSubmit={handleSubmit}>
                         <div className="form__field">
