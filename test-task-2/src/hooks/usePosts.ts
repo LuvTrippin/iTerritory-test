@@ -15,7 +15,7 @@ export function usePosts() {
 
 export function useCreatePost() {
     const queryClient = useQueryClient();
-    const userId = useAuthStore((state) => state.user.id);
+    const userId = useAuthStore((state) => state.user!.id);
 
     return useMutation({
         mutationFn: (data: PostFormData) => postApi.create(data, userId),
@@ -29,7 +29,7 @@ export function useCreatePost() {
 
 export function useUpdatePost() {
     const queryClient = useQueryClient();
-    const userId = useAuthStore((state) => state.user.id);
+    const userId = useAuthStore((state) => state.user!.id);
 
     return useMutation({
         mutationFn: ({id, data}: {id: number, data: PostFormData}) => postApi.update(id, data, userId),
