@@ -91,6 +91,8 @@ src/
 ├── pages/
 │   ├── HomePage.tsx       # Главная страница
 │   └── AboutPage.tsx      # Страница About
+├── types/
+│   └── index.ts           # Описание типов приложения 
 ├── assets/
 │   └── placeholder.jpg    # Локальное fallback-изображение
 ├── routes.tsx             # Конфигурация маршрутов
